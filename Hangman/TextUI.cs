@@ -20,33 +20,32 @@ namespace Hangman
             return text.ToLower();
         }
 
-        public string GetCharResponse()
+        public char GetCharResponse()
         {
-            string text;
+            char letter;
             do
             {
                 /*
                 this.PrintBlankLine();
                 this.Print("Please enter a letter");
                 */
-                text = this.GetResponse();
-            } while (!text.All(char.IsLetter) || text.All(char.IsWhiteSpace) || text.ToCharArray().Length > 1);
+            } while (!char.TryParse(this.GetResponse(), out letter) || !char.IsLetter(letter) || char.IsWhiteSpace(letter));
 
-            return text.ToLower();
+            return char.ToLower(letter);
         }
 
-        public int GetNumericResponse(int minSelection, int maxSelection)
+        public int GetNumericResponse(int minNumber, int maxNumber)
         {
-            int selection;
+            int number;
             do
             {
                 /*
                 this.PrintBlankLine();
                 this.Print("Please enter a number");
                 */
-            } while (!int.TryParse(this.GetResponse(), out selection) || !(selection >= minSelection && selection <= maxSelection));
+            } while (!int.TryParse(this.GetResponse(), out number) || !(number >= minNumber && number <= maxNumber));
 
-            return selection;
+            return number;
         }
 
         public string GetResponse()

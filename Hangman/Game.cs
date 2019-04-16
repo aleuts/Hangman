@@ -7,8 +7,8 @@ namespace Hangman
     public class GameManager
     {
         private readonly string title = "Hangman";
-        private readonly string version = "Version 1.0.0";
-        private readonly string release = "10/April/2019";
+        private readonly string version = "Version 1.0.1";
+        private readonly string release = "16/April/2019";
         private readonly string contact = "www.github.com/aleuts";
 
         private StringBuilder wordMask;
@@ -80,7 +80,7 @@ namespace Hangman
         {
             this.textUI.PrintBlankLine();
             this.textUI.PrintCenter("Make a guess!");
-            this.letterGussed = Convert.ToChar(this.textUI.GetCharResponse());
+            this.letterGussed = this.textUI.GetCharResponse();
         }
 
         private void CheckGuess()
